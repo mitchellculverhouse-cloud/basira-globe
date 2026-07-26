@@ -97,21 +97,103 @@ Promise.all([
 
 
 
-    // CAPITAL DOTS
+    // CAPITAL + TERRAIN NODES
+
+
+fetch("data/terrain.json")
+
+.then(response => response.json())
+
+.then(terrain => {
+
+
+    const terrainPoints = terrain.map(zone => ({
+
+        ...zone,
+
+        type:"terrain"
+
+    }));
+
+
+    const capitalPoints = capitals.map(city => ({
+
+        ...city,
+
+        type:"capital"
+
+    }));
+
+
+
+    const combinedPoints = [
+
+        ...capitalPoints,
+
+        ...terrainPoints
+
+    ];
+
+
 
     world
 
-    .pointsData(capitals)
+    .pointsData(combinedPoints)
 
     .pointLat("lat")
 
     .pointLng("lng")
 
-    .pointColor(() => "#14e1a7")
 
-    .pointAltitude(0)
+    .pointColor(d => {
 
-    .pointRadius(0.25);
+
+        if(d.type === "terrain"){
+
+            return "#555555";
+
+        }
+
+
+        return "#14e1a7";
+
+
+    })
+
+
+    .pointAltitude(d => {
+
+
+        if(d.type === "terrain"){
+
+            return d.height;
+
+        }
+
+
+        return 0;
+
+
+    })
+
+
+    .pointRadius(d => {
+
+
+        if(d.type === "terrain"){
+
+            return d.size * 0.05;
+
+        }
+
+
+        return 0.25;
+
+
+    });
+
+
+});
 
 
 
@@ -391,14 +473,3 @@ Promise.all([
 
 });
 
-// TERRAIN DATA TEST
-
-fetch("data/terrain.json")
-
-.then(response => response.json())
-
-.then(terrain => {
-
-    console.log("Terrain loaded:", terrain);
-
-});
