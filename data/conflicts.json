@@ -30,3 +30,40 @@
     "risk": "MEDIUM"
   }
 ]
+[
+  {
+    "name":"Libya",
+    "lat":27.0,
+    "lng":17.0
+  },
+  {
+    "name":"Sudan",
+    "lat":15.5,
+    "lng":32.5
+  },
+  {
+    "name":"DR Congo",
+    "lat":-3.0,
+    "lng":23.5
+  },
+  {
+    "name":"Myanmar",
+    "lat":21.0,
+    "lng":96.0
+  },
+  {
+    "name":"Thailand Cambodia Border",
+    "lat":14.3,
+    "lng":103.5
+  },
+  {
+    "name":"Mali",
+    "lat":17.5,
+    "lng":-4.0
+  },
+  {
+    "name":"Somalia",
+    "lat":5.0,
+    "lng":46.0
+  }
+]
