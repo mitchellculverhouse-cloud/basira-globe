@@ -402,3 +402,130 @@ setTimeout(() => {
     console.log("Shipping particles loaded:", shippingParticles);
 
 }, 3000);
+
+// SHIPPING PARTICLE LAYER
+
+setTimeout(() => {
+
+
+const scene = world.scene();
+
+const particles = [];
+
+
+shippingParticles.forEach(route => {
+
+
+    const particle = new THREE.Mesh(
+
+        new THREE.SphereGeometry(
+            0.35,
+            8,
+            8
+        ),
+
+        new THREE.MeshBasicMaterial({
+            color:0xd4af37
+        })
+
+    );
+
+
+    scene.add(particle);
+
+
+    particles.push({
+
+        object: particle,
+
+        route: route,
+
+        progress: Math.random()
+
+    });
+
+
+});
+
+
+
+
+function animateShipping(){
+
+
+    particles.forEach(p => {
+
+
+        p.progress += 0.002;
+
+
+        if(p.progress > 1){
+
+            p.progress = 0;
+
+        }
+
+
+
+        const lat =
+
+        p.route.startLat +
+
+        (p.route.endLat - p.route.startLat)
+
+        * p.progress;
+
+
+
+        const lng =
+
+        p.route.startLng +
+
+        (p.route.endLng - p.route.startLng)
+
+        * p.progress;
+
+
+
+
+        const phi = lat * Math.PI / 180;
+
+        const theta = lng * Math.PI / 180;
+
+
+        const radius = 102;
+
+
+
+        p.object.position.set(
+
+            radius *
+            Math.cos(phi) *
+            Math.cos(theta),
+
+
+            radius *
+            Math.sin(phi),
+
+
+            radius *
+            Math.cos(phi) *
+            Math.sin(theta)
+
+        );
+
+
+    });
+
+
+
+    requestAnimationFrame(animateShipping);
+
+}
+
+
+
+animateShipping();
+
+
+},3000);
