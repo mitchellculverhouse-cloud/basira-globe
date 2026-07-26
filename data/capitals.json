@@ -45,3 +45,45 @@
     "lng": 77.2090
   }
 ]
+[
+  {
+    "city":"Cairo",
+    "lat":30.0444,
+    "lng":31.2357
+  },
+  {
+    "city":"Ankara",
+    "lat":39.9334,
+    "lng":32.8597
+  },
+  {
+    "city":"Baghdad",
+    "lat":33.3152,
+    "lng":44.3661
+  },
+  {
+    "city":"Islamabad",
+    "lat":33.6844,
+    "lng":73.0479
+  },
+  {
+    "city":"Jakarta",
+    "lat":-6.2088,
+    "lng":106.8456
+  },
+  {
+    "city":"Seoul",
+    "lat":37.5665,
+    "lng":126.9780
+  },
+  {
+    "city":"Nairobi",
+    "lat":-1.2921,
+    "lng":36.8219
+  },
+  {
+    "city":"Abuja",
+    "lat":9.0765,
+    "lng":7.3986
+  }
+]
