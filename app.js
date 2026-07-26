@@ -142,25 +142,59 @@ Promise.all([
     });
 
 
+// Premium conflict beacon pulses
 
-    // Pulse rings for conflicts only
+world
 
-    world
+.ringsData(conflicts)
 
-    .ringsData(conflicts)
+.ringLat("lat")
 
-    .ringLat("lat")
+.ringLng("lng")
 
-    .ringLng("lng")
+.ringColor(() => "#ff1744")
 
-    .ringColor(() => "#ff1744")
+.ringMaxRadius(3)
 
-    .ringMaxRadius(2)
+.ringPropagationSpeed(0.45)
 
-    .ringPropagationSpeed(1)
+.ringRepeatPeriod(1800)
 
-    .ringRepeatPeriod(1200);
+.ringAltitude(0.015);
 
 
 
-});
+// Stronger beacon points
+
+world
+
+.pointsData(conflicts)
+
+.pointLat("lat")
+
+.pointLng("lng")
+
+.pointColor(() => "#ff1744")
+
+.pointAltitude(0.02)
+
+.pointRadius(0.8);
+
+    // Inner glow pulse
+
+world
+
+.ringsData(conflicts)
+
+.ringLat("lat")
+
+.ringLng("lng")
+
+.ringColor(() => "rgba(255,23,68,0.6)")
+
+.ringMaxRadius(1)
+
+.ringPropagationSpeed(0.2)
+
+.ringRepeatPeriod(900)
+
