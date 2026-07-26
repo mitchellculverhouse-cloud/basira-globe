@@ -1,1 +1,167 @@
+body {
 
+    margin:0;
+    padding:0;
+
+    background:#000000;
+
+    overflow:hidden;
+
+    font-family:
+    Arial,
+    Helvetica,
+    sans-serif;
+
+}
+
+
+#basira {
+
+    width:100vw;
+    height:100vh;
+
+    position:relative;
+
+    background:#000000;
+
+    overflow:hidden;
+
+}
+
+
+
+/* BRAND */
+
+.branding {
+
+    position:absolute;
+
+    top:70px;
+    left:70px;
+
+    z-index:10;
+
+    color:#14e1a7;
+
+}
+
+
+.branding h1 {
+
+    margin:0;
+
+    font-size:52px;
+
+    font-weight:600;
+
+    letter-spacing:16px;
+
+}
+
+
+.branding p {
+
+    margin-top:15px;
+
+    font-size:12px;
+
+    letter-spacing:6px;
+
+    opacity:0.65;
+
+}
+
+
+
+/* GLOBE AREA */
+
+#globe {
+
+    position:absolute;
+
+    width:100%;
+
+    height:100%;
+
+    right:0;
+
+    top:0;
+
+}
+
+
+
+/* INTELLIGENCE PANEL */
+
+.intel-panel {
+
+    position:absolute;
+
+    right:70px;
+
+    bottom:80px;
+
+    width:260px;
+
+    z-index:10;
+
+    color:#14e1a7;
+
+    border-left:
+
+    1px solid
+
+    rgba(20,225,167,0.25);
+
+    padding-left:25px;
+
+}
+
+
+.intel-panel h2 {
+
+    font-size:12px;
+
+    font-weight:400;
+
+    letter-spacing:5px;
+
+    margin-bottom:35px;
+
+}
+
+
+
+.intel-panel div {
+
+    font-size:13px;
+
+    letter-spacing:2px;
+
+    margin-bottom:25px;
+
+    color:#b8fff0;
+
+}
+
+
+
+/* subtle red alert markers */
+
+.intel-panel div::before {
+
+    content:"";
+
+    display:inline-block;
+
+    width:7px;
+
+    height:7px;
+
+    margin-right:12px;
+
+    background:#ff1744;
+
+    border-radius:50%;
+
+}
