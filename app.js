@@ -260,13 +260,8 @@ world
 
     });
 
-if(d.type === "energy"){
 
-    return "#ff9800";
 
-}
-
-});
 // INTELLIGENCE + SHIPPING ROUTES
 
 Promise.all([
