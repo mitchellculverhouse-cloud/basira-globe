@@ -194,18 +194,23 @@ world
 
     .ringColor(d => {
 
+    if(d.type === "conflict"){
 
-        if(d.type === "conflict"){
+        return "#ff1744";
 
-            return "#ff1744";
-
-        }
-
-
-        return "rgba(20,225,167,0.8)";
+    }
 
 
-    })
+    if(d.type === "energy"){
+
+        return "#ff9800";
+
+    }
+
+
+    return "rgba(20,225,167,0.8)";
+
+})
 
 
     .ringMaxRadius(d => {
