@@ -261,4 +261,36 @@ Promise.all([
 
 
 });
+// INTELLIGENCE ARCS
 
+fetch("data/arcs.json")
+
+.then(response => response.json())
+
+.then(arcs => {
+
+    world
+
+    .arcsData(arcs)
+
+    .arcStartLat("startLat")
+
+    .arcStartLng("startLng")
+
+    .arcEndLat("endLat")
+
+    .arcEndLng("endLng")
+
+    .arcColor(() => "#14e1a7")
+
+    .arcAltitude(0.15)
+
+    .arcStroke(0.6)
+
+    .arcDashLength(0.4)
+
+    .arcDashGap(1)
+
+    .arcDashAnimateTime(2500);
+
+});
