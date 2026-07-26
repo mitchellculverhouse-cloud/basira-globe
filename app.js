@@ -89,100 +89,21 @@ Promise.all([
 .then(([capitals, conflicts]) => {
 
 
-// CAPITAL + TERRAIN POINT LAYER
+// CAPITAL DOTS
 
-fetch("data/terrain.json")
+world
 
-.then(response => response.json())
+.pointsData(capitals)
 
-.then(terrain => {
+.pointLat("lat")
 
+.pointLng("lng")
 
-    const capitalPoints = capitals.map(city => ({
+.pointColor(() => "#14e1a7")
 
-        ...city,
+.pointAltitude(0)
 
-        type:"capital"
-
-    }));
-
-
-    const terrainPoints = terrain.map(zone => ({
-
-        ...zone,
-
-        type:"terrain"
-
-    }));
-
-
-    const combinedPoints = [
-
-        ...capitalPoints,
-
-        ...terrainPoints
-
-    ];
-
-
-
-    world
-
-    .pointsData(combinedPoints)
-
-    .pointLat("lat")
-
-    .pointLng("lng")
-
-
-    .pointColor(d => {
-
-
-        if(d.type === "terrain"){
-
-            return "rgba(90,100,90,0.18)";
-
-        }
-
-
-        return "#14e1a7";
-
-    })
-
-
-    .pointAltitude(d => {
-
-
-        if(d.type === "terrain"){
-
-            return d.height;
-
-        }
-
-
-        return 0;
-
-    })
-
-
-    .pointRadius(d => {
-
-
-        if(d.type === "terrain"){
-
-            return d.size * 0.18;
-
-        }
-
-
-        return 0.25;
-
-    });
-
-
-});
-
-
+.pointRadius(0.25);
 
 
 
