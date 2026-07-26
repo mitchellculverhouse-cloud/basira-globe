@@ -195,9 +195,9 @@ const terrainMaterial = new THREE.MeshBasicMaterial({
 
     map: terrainTexture,
 
-    transparent: true,
+    transparent: false,
 
-    opacity: 0.25
+    opacity: 1
 
 });
 
