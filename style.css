@@ -39,7 +39,7 @@ body {
     top:70px;
     left:70px;
 
-    z-index:10;
+    z-index:20;
 
     color:#14e1a7;
 
@@ -50,11 +50,11 @@ body {
 
     margin:0;
 
-    font-size:52px;
+    font-size:56px;
 
     font-weight:600;
 
-    letter-spacing:16px;
+    letter-spacing:18px;
 
 }
 
@@ -73,19 +73,19 @@ body {
 
 
 
-/* GLOBE AREA */
+/* GLOBE */
 
 #globe {
 
     position:absolute;
 
-    width:100%;
+    width:135%;
 
-    height:100%;
+    height:135%;
 
-    right:0;
+    right:-18%;
 
-    top:0;
+    top:-15%;
 
 }
 
@@ -103,14 +103,12 @@ body {
 
     width:260px;
 
-    z-index:10;
+    z-index:20;
 
     color:#14e1a7;
 
     border-left:
-
     1px solid
-
     rgba(20,225,167,0.25);
 
     padding-left:25px;
@@ -131,7 +129,6 @@ body {
 }
 
 
-
 .intel-panel div {
 
     font-size:13px;
@@ -144,9 +141,6 @@ body {
 
 }
 
-
-
-/* subtle red alert markers */
 
 .intel-panel div::before {
 
@@ -163,5 +157,23 @@ body {
     background:#ff1744;
 
     border-radius:50%;
+
+}
+
+
+
+/* subtle glow */
+
+.branding h1 {
+
+    text-shadow:
+    0 0 10px rgba(20,225,167,0.15);
+
+}
+
+
+.intel-panel {
+
+    backdrop-filter: blur(2px);
 
 }
