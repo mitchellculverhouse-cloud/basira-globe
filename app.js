@@ -261,17 +261,46 @@ Promise.all([
 
 
 });
-// INTELLIGENCE ARCS
+// INTELLIGENCE + SHIPPING ROUTES
 
-fetch("data/arcs.json")
+Promise.all([
 
-.then(response => response.json())
+    fetch("data/arcs.json").then(response => response.json()),
 
-.then(arcs => {
+    fetch("data/routes.json").then(response => response.json())
+
+])
+
+
+.then(([intelligenceArcs, shippingRoutes]) => {
+
+
+    const allRoutes = [
+
+        ...intelligenceArcs.map(route => ({
+
+            ...route,
+
+            type:"intelligence"
+
+        })),
+
+
+        ...shippingRoutes.map(route => ({
+
+            ...route,
+
+            type:"shipping"
+
+        }))
+
+    ];
+
+
 
     world
 
-    .arcsData(arcs)
+    .arcsData(allRoutes)
 
     .arcStartLat("startLat")
 
@@ -281,16 +310,87 @@ fetch("data/arcs.json")
 
     .arcEndLng("endLng")
 
-    .arcColor(() => "#14e1a7")
 
-    .arcAltitude(0.15)
+    .arcColor(d => {
 
-    .arcStroke(0.6)
 
-    .arcDashLength(0.4)
+        if(d.type === "shipping"){
+
+            return "#d4af37";
+
+        }
+
+
+        return "#14e1a7";
+
+
+    })
+
+
+    .arcAltitude(d => {
+
+
+        if(d.type === "shipping"){
+
+            return 0.08;
+
+        }
+
+
+        return 0.15;
+
+
+    })
+
+
+    .arcStroke(d => {
+
+
+        if(d.type === "shipping"){
+
+            return 0.8;
+
+        }
+
+
+        return 0.6;
+
+
+    })
+
+
+    .arcDashLength(d => {
+
+
+        if(d.type === "shipping"){
+
+            return 0.25;
+
+        }
+
+
+        return 0.4;
+
+
+    })
+
 
     .arcDashGap(1)
 
-    .arcDashAnimateTime(2500);
+    .arcDashAnimateTime(d => {
+
+
+        if(d.type === "shipping"){
+
+            return 3500;
+
+        }
+
+
+        return 2500;
+
+
+    });
+
 
 });
