@@ -62,27 +62,8 @@ fetch("data/countries.geojson")
 
     .polygonsData(countries.features)
 
-    .polygonCapColor(d => {
+    .polygonCapColor(() => "rgba(20,40,35,0.85)")
 
-    const name = d.properties.name || "";
-
-
-    if(
-        name.includes("Russia") ||
-        name.includes("China") ||
-        name.includes("India") ||
-        name.includes("Brazil")
-    ){
-
-        return "rgba(35,55,45,0.9)";
-
-    }
-
-
-    return "rgba(18,32,28,0.9)";
-
-})
-        
     .polygonSideColor(() => "rgba(20,225,167,0.15)")
 
     .polygonStrokeColor(() => "#14e1a7")
@@ -91,11 +72,6 @@ fetch("data/countries.geojson")
 
 
 });
-
-
-
-
-
 
 
 
