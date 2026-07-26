@@ -80,17 +80,34 @@ fetch("data/capitals.json")
 
     world
 
-    .pointsData(capitals)
+    .htmlElementsData(capitals)
 
-    .pointLat("lat")
+    .htmlLat("lat")
 
-    .pointLng("lng")
+    .htmlLng("lng")
 
-    .pointColor(() => "#14e1a7")
+    .htmlElement(() => {
 
-    .pointAltitude(0.01)
 
-    .pointRadius(0.35);
+        const node = document.createElement("div");
+
+
+        node.style.width = "8px";
+
+        node.style.height = "8px";
+
+        node.style.borderRadius = "50%";
+
+        node.style.background = "#14e1a7";
+
+        node.style.boxShadow =
+        "0 0 12px #14e1a7, 0 0 25px rgba(20,225,167,0.5)";
+
+
+        return node;
+
+
+    });
 
 
 });
