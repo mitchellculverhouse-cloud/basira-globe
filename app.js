@@ -129,38 +129,58 @@ fetch("data/conflicts.json")
 .then(conflicts => {
 
 
-   // Conflict cores
+    // Red conflict cores using HTML overlay
 
-world
+    world
 
-.pointsData(conflicts)
+    .htmlElementsData(conflicts)
 
-.pointLat("lat")
+    .htmlLat("lat")
 
-.pointLng("lng")
+    .htmlLng("lng")
 
-.pointColor(() => "#ff1744")
-
-.pointAltitude(0)
-
-.pointRadius(0.45);
+    .htmlElement(() => {
 
 
+        const beacon = document.createElement("div");
 
-// Conflict pulse rings
 
-world
+        beacon.style.width = "12px";
 
-.ringsData(conflicts)
+        beacon.style.height = "12px";
 
-.ringLat("lat")
+        beacon.style.borderRadius = "50%";
 
-.ringLng("lng")
+        beacon.style.background = "#ff1744";
 
-.ringColor(() => "rgba(255,23,68,0.8)")
+        beacon.style.boxShadow =
+        "0 0 15px #ff1744, 0 0 35px #ff1744";
 
-.ringMaxRadius(3)
 
-.ringPropagationSpeed(0.5)
+        return beacon;
 
-.ringRepeatPeriod(1600);
+
+    });
+
+
+
+    // Pulsing rings
+
+    world
+
+    .ringsData(conflicts)
+
+    .ringLat("lat")
+
+    .ringLng("lng")
+
+    .ringColor(() => "#ff1744")
+
+    .ringMaxRadius(3)
+
+    .ringPropagationSpeed(0.5)
+
+    .ringRepeatPeriod(1600);
+
+
+});
