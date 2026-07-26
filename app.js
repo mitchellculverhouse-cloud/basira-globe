@@ -145,9 +145,9 @@ fetch("data/conflicts.json")
         const beacon = document.createElement("div");
 
 
-        beacon.style.width = "12px";
+        beacon.style.width = "8px";
 
-        beacon.style.height = "12px";
+        beacon.style.height = "8px";
 
         beacon.style.borderRadius = "50%";
 
