@@ -4,10 +4,17 @@ const globeContainer = document.getElementById("globe");
 const world = Globe()(globeContainer)
 
 .backgroundColor("#000000")
+    .globeMaterial(
+new THREE.MeshPhongMaterial({
+    color: "#111111",
+    shininess: 0.3
+})
+)
 
 // Remove Earth texture
-.globeImageUrl(null)
-
+.globeImageUrl(
+"https://unpkg.com/three-globe/example/img/earth-dark.jpg"
+)
 .showAtmosphere(true)
 
 .atmosphereColor("#14e1a7")
