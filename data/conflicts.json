@@ -1,1 +1,32 @@
-
+[
+  {
+    "name": "Strait of Hormuz",
+    "lat": 26.56,
+    "lng": 56.25,
+    "risk": "HIGH"
+  },
+  {
+    "name": "Donbas",
+    "lat": 48.0,
+    "lng": 37.8,
+    "risk": "HIGH"
+  },
+  {
+    "name": "Gaza",
+    "lat": 31.5,
+    "lng": 34.45,
+    "risk": "HIGH"
+  },
+  {
+    "name": "Taiwan Strait",
+    "lat": 24.5,
+    "lng": 120.5,
+    "risk": "MEDIUM"
+  },
+  {
+    "name": "Red Sea",
+    "lat": 15.5,
+    "lng": 42.5,
+    "risk": "MEDIUM"
+  }
+]
