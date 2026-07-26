@@ -3,13 +3,11 @@ const globeContainer = document.getElementById("globe");
 
 const world = Globe()(globeContainer)
 
-
 .backgroundColor("#000000")
 
-
-
-
-
+.globeImageUrl(
+"https://unpkg.com/three-globe/example/img/earth-dark.jpg"
+)
 
 .showAtmosphere(true)
 
@@ -19,20 +17,20 @@ const world = Globe()(globeContainer)
 
 
 
-// Middle East focus
+// Camera position - Middle East focus
 
 world.pointOfView(
 {
     lat:35,
     lng:35,
-    altitude:1.6
+    altitude:1.4
 },
 1000
 );
 
 
 
-// Rotation
+// Slow rotation
 
 world.controls().autoRotate = true;
 
@@ -44,157 +42,123 @@ world.controls().enablePan = false;
 
 
 
-// Country outlines
+// Country borders
 
-fetch(
-"data/countries.geojson"
-)
+fetch("data/countries.geojson")
 
 .then(response => response.json())
 
 .then(countries => {
 
 
-world
-.polygonsData(countries.features)
+    world
 
-.polygonCapColor(() => "rgba(0,0,0,0)")
+    .polygonsData(countries.features)
 
-.polygonSideColor(() => "rgba(20,225,167,0.15)")
+    .polygonCapColor(() => "rgba(0,0,0,0)")
 
-.polygonStrokeColor(() => "#14e1a7")
+    .polygonSideColor(() => "rgba(20,225,167,0.15)")
 
-.polygonAltitude(0.002);
+    .polygonStrokeColor(() => "#14e1a7")
+
+    .polygonAltitude(0.002);
 
 
 });
 
-// Load capitals and conflicts together
-
-Promise.all([
-
-    fetch("data/capitals.json").then(res => res.json()),
-
-    fetch("data/conflicts.json").then(res => res.json())
-
-])
-
-.then(([capitals, conflicts]) => {
-
-
-    // Add type identifiers
-
-    capitals.forEach(city => {
-
-        city.type = "capital";
-
-    });
-
-
-    conflicts.forEach(event => {
-
-        event.type = "conflict";
-
-    });
 
 
 
-    const intelligencePoints = [
+// Capitals
 
-        ...capitals,
+fetch("data/capitals.json")
 
-        ...conflicts
+.then(response => response.json())
 
-    ];
+.then(capitals => {
 
-
-
-    // Points layer
 
     world
 
-    .pointsData(intelligencePoints)
+    .pointsData(capitals)
 
     .pointLat("lat")
 
     .pointLng("lng")
 
-    .pointColor(point => {
+    .pointColor(() => "#14e1a7")
 
-        return point.type === "conflict"
+    .pointAltitude(0.01)
 
-        ? "#ff1744"
+    .pointRadius(0.35);
 
-        : "#14e1a7";
 
-    })
+});
 
-    .pointAltitude(0.005)
 
-    .pointRadius(point => {
 
-        return point.type === "conflict"
 
-        ? 0.6
+// Conflict beacons
 
-        : 0.35;
+fetch("data/conflicts.json")
+
+.then(response => response.json())
+
+.then(conflicts => {
+
+
+    // Red beacon centres
+
+    world
+
+    .htmlElementsData(conflicts)
+
+    .htmlLat("lat")
+
+    .htmlLng("lng")
+
+    .htmlElement(() => {
+
+
+        const marker = document.createElement("div");
+
+
+        marker.style.width = "14px";
+
+        marker.style.height = "14px";
+
+        marker.style.background = "#ff1744";
+
+        marker.style.borderRadius = "50%";
+
+        marker.style.boxShadow =
+        "0 0 20px #ff1744";
+
+
+        return marker;
+
 
     });
 
 
-// Premium conflict beacon pulses
 
-world
+    // Pulse rings
 
-.ringsData(conflicts)
+    world
 
-.ringLat("lat")
+    .ringsData(conflicts)
 
-.ringLng("lng")
+    .ringLat("lat")
 
-.ringColor(() => "#ff1744")
+    .ringLng("lng")
 
-.ringMaxRadius(3)
+    .ringColor(() => "#ff1744")
 
-.ringPropagationSpeed(0.45)
+    .ringMaxRadius(2.5)
 
-.ringRepeatPeriod(1800)
+    .ringPropagationSpeed(0.6)
 
-.ringAltitude(0.015);
-
+    .ringRepeatPeriod(1500);
 
 
-// Stronger beacon points
-
-world
-
-.pointsData(conflicts)
-
-.pointLat("lat")
-
-.pointLng("lng")
-
-.pointColor(() => "#ff1744")
-
-.pointAltitude(0.02)
-
-.pointRadius(0.8);
-
-    // Inner glow pulse
-
-world
-
-.ringsData(conflicts)
-
-.ringLat("lat")
-
-.ringLng("lng")
-
-.ringColor(() => "rgba(255,23,68,0.6)")
-
-.ringMaxRadius(1)
-
-.ringPropagationSpeed(0.2)
-
-.ringRepeatPeriod(900)
-
+});
