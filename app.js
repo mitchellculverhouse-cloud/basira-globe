@@ -381,4 +381,31 @@ Promise.all([
 
 });
 
+// ENERGY NODES
 
+fetch("data/energy.json")
+
+.then(response => response.json())
+
+.then(energy => {
+
+
+    world
+
+    .ringsData(energy)
+
+    .ringLat("lat")
+
+    .ringLng("lng")
+
+    .ringColor(() => "#ff9800")
+
+    .ringMaxRadius(2)
+
+    .ringPropagationSpeed(0.25)
+
+    .ringRepeatPeriod(3000);
+
+
+
+});
