@@ -1,5 +1,6 @@
 window.terrainZones = terrainZones;
 
+
 const globeContainer = document.getElementById("globe");
 
 
@@ -17,6 +18,7 @@ const world = Globe()(globeContainer)
 
 
 
+
 // Camera position - Middle East focus
 
 world.pointOfView(
@@ -30,6 +32,7 @@ world.pointOfView(
 
 
 
+
 // Slow rotation
 
 world.controls().autoRotate = true;
@@ -39,6 +42,7 @@ world.controls().autoRotateSpeed = 0.18;
 world.controls().enableZoom = false;
 
 world.controls().enablePan = false;
+
 
 
 
@@ -71,14 +75,27 @@ fetch("data/countries.geojson")
 
 
 
-// CAPITAL NODES
 
-fetch("data/capitals.json")
 
-.then(response => response.json())
 
-.then(capitals => {
+// LOAD CAPITALS AND CONFLICTS TOGETHER
 
+Promise.all([
+
+    fetch("data/capitals.json").then(r => r.json()),
+
+    fetch("data/conflicts.json").then(r => r.json())
+
+])
+
+
+.then(([capitals, conflicts]) => {
+
+
+
+
+
+    // CAPITAL DOTS
 
     world
 
@@ -96,41 +113,10 @@ fetch("data/capitals.json")
 
 
 
-    // Capital glow pulses
-
-    world
-
-    .ringsData(capitals)
-
-    .ringLat("lat")
-
-    .ringLng("lng")
-
-    .ringColor(() => "rgba(20,225,167,0.8)")
-
-    .ringMaxRadius(0.7)
-
-    .ringPropagationSpeed(0.4)
-
-    .ringRepeatPeriod(2000);
-
-
-});
 
 
 
-
-
-// CONFLICT BEACONS
-
-fetch("data/conflicts.json")
-
-.then(response => response.json())
-
-.then(conflicts => {
-
-
-    // Red conflict cores using HTML overlay
+    // CONFLICT BEACON CORES
 
     world
 
@@ -154,6 +140,7 @@ fetch("data/conflicts.json")
 
         beacon.style.background = "#ff1744";
 
+
         beacon.style.boxShadow =
         "0 0 15px #ff1744, 0 0 35px #ff1744";
 
@@ -165,24 +152,110 @@ fetch("data/conflicts.json")
 
 
 
-    // Pulsing rings
+
+
+
+
+    // COMBINED RINGS
+
+    const intelligenceRings = [
+
+        ...capitals.map(city => ({
+
+            ...city,
+
+            type:"capital"
+
+        })),
+
+
+
+        ...conflicts.map(zone => ({
+
+            ...zone,
+
+            type:"conflict"
+
+        }))
+
+
+    ];
+
+
+
+
 
     world
 
-    .ringsData(conflicts)
+    .ringsData(intelligenceRings)
 
     .ringLat("lat")
 
     .ringLng("lng")
 
-    .ringColor(() => "#ff1744")
+    .ringColor(d => {
 
-    .ringMaxRadius(3)
 
-    .ringPropagationSpeed(0.5)
+        if(d.type === "conflict"){
 
-    .ringRepeatPeriod(1600);
+            return "#ff1744";
+
+        }
+
+
+        return "rgba(20,225,167,0.8)";
+
+
+    })
+
+
+    .ringMaxRadius(d => {
+
+
+        if(d.type === "conflict"){
+
+            return 3;
+
+        }
+
+
+        return 0.7;
+
+
+    })
+
+
+    .ringPropagationSpeed(d => {
+
+
+        if(d.type === "conflict"){
+
+            return 0.5;
+
+        }
+
+
+        return 0.4;
+
+
+    })
+
+
+    .ringRepeatPeriod(d => {
+
+
+        if(d.type === "conflict"){
+
+            return 1600;
+
+        }
+
+
+        return 2000;
+
+
+    });
+
 
 
 });
-
