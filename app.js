@@ -140,7 +140,7 @@ fetch("data/terrain.json")
 
         if(d.type === "terrain"){
 
-            return "rgba(100,110,100,0.35)";
+            return "rgba(90,100,90,0.18)";
 
         }
 
@@ -170,7 +170,7 @@ fetch("data/terrain.json")
 
         if(d.type === "terrain"){
 
-            return d.size * 0.12;
+            return d.size * 0.18;
 
         }
 
