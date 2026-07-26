@@ -183,3 +183,36 @@ fetch("data/conflicts.json")
 
 
 });
+
+// TERRAIN OVERLAY TEST
+
+const terrainTexture = new THREE.TextureLoader().load(
+"assets/terrain/terrain-dark.jpg"
+);
+
+
+const terrainMaterial = new THREE.MeshBasicMaterial({
+
+    map: terrainTexture,
+
+    transparent: true,
+
+    opacity: 0.25
+
+});
+
+
+const terrainGeometry = new THREE.SphereGeometry(
+100.8,
+64,
+64
+);
+
+
+const terrainSphere = new THREE.Mesh(
+terrainGeometry,
+terrainMaterial
+);
+
+
+world.scene().add(terrainSphere);
