@@ -1,0 +1,37 @@
+[
+  {
+    "name":"Persian Gulf Energy Hub",
+    "lat":27,
+    "lng":51
+  },
+  {
+    "name":"North Sea Oil Region",
+    "lat":56,
+    "lng":3
+  },
+  {
+    "name":"Caspian Energy Basin",
+    "lat":42,
+    "lng":50
+  },
+  {
+    "name":"West Siberia Energy Region",
+    "lat":61,
+    "lng":70
+  },
+  {
+    "name":"Gulf of Mexico Energy Zone",
+    "lat":25,
+    "lng":-90
+  },
+  {
+    "name":"Arabian Peninsula Fields",
+    "lat":23,
+    "lng":48
+  },
+  {
+    "name":"North Africa Gas Region",
+    "lat":31,
+    "lng":10
+  }
+]
