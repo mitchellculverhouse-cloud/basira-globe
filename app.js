@@ -5,9 +5,8 @@ const world = Globe()(globeContainer)
 
 .backgroundColor("#000000")
 
-.globeImageUrl(
-"assets/terrain/terrain-dark.jpg"
-)
+.globeImageUrl(null)
+
 .showAtmosphere(true)
 
 .atmosphereColor("#14e1a7")
