@@ -5,9 +5,8 @@ const world = Globe()(globeContainer)
 
 .backgroundColor("#000000")
 
-.globeImageUrl(
-"https://unpkg.com/three-globe/example/img/earth-night.jpg"
-)
+.globeImageUrl(null)
+
 .showAtmosphere(true)
 
 .atmosphereColor("#14e1a7")
