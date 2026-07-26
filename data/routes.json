@@ -1,38 +1,57 @@
 [
   {
-    "startLat": 31.2304,
-    "startLng": 121.4737,
-    "endLat": 25.2048,
-    "endLng": 55.2708
+    "name": "Strait of Hormuz Energy Corridor",
+    "startLat": 26.5,
+    "startLng": 56.3,
+    "endLat": 25.2,
+    "endLng": 55.3
   },
+
   {
-    "startLat": 1.3521,
-    "startLng": 103.8198,
-    "endLat": 25.2048,
-    "endLng": 55.2708
+    "name": "Persian Gulf to Red Sea Route",
+    "startLat": 25.2,
+    "startLng": 55.3,
+    "endLat": 12.6,
+    "endLng": 43.3
   },
+
   {
-    "startLat": 19.0760,
-    "startLng": 72.8777,
-    "endLat": 25.2048,
-    "endLng": 55.2708
+    "name": "Bab el-Mandeb Maritime Route",
+    "startLat": 12.6,
+    "startLng": 43.3,
+    "endLat": 30.0,
+    "endLng": 32.5
   },
+
   {
-    "startLat": 41.0082,
-    "startLng": 28.9784,
-    "endLat": 24.7136,
-    "endLng": 46.6753
+    "name": "Suez Mediterranean Route",
+    "startLat": 30.0,
+    "startLng": 32.5,
+    "endLat": 36.1,
+    "endLng": 5.4
   },
+
   {
-    "startLat": 30.0444,
-    "startLng": 31.2357,
-    "endLat": 21.4858,
-    "endLng": 39.1925
+    "name": "Singapore Trade Corridor",
+    "startLat": 1.3,
+    "startLng": 103.8,
+    "endLat": 25.2,
+    "endLng": 55.3
   },
+
   {
-    "startLat": 51.9244,
-    "startLng": 4.4777,
-    "endLat": 25.2048,
-    "endLng": 55.2708
+    "name": "East Asia Energy Route",
+    "startLat": 31.2,
+    "startLng": 121.5,
+    "endLat": 1.3,
+    "endLng": 103.8
+  },
+
+  {
+    "name": "Europe Gulf Trade Route",
+    "startLat": 51.9,
+    "startLng": 4.5,
+    "endLat": 25.2,
+    "endLng": 55.3
   }
 ]
