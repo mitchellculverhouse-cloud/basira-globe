@@ -394,3 +394,11 @@ Promise.all([
 
 
 });
+
+// SHIPPING PARTICLE TEST
+
+setTimeout(() => {
+
+    console.log("Shipping particles loaded:", shippingParticles);
+
+}, 3000);
