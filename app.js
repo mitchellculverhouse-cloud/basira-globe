@@ -313,22 +313,18 @@ Promise.all([
 
     .arcColor(d => {
 
-
         if(d.type === "shipping"){
 
             return "#d4af37";
 
         }
 
-
         return "#14e1a7";
-
 
     })
 
 
     .arcAltitude(d => {
-
 
         if(d.type === "shipping"){
 
@@ -336,15 +332,12 @@ Promise.all([
 
         }
 
-
         return 0.15;
-
 
     })
 
 
     .arcStroke(d => {
-
 
         if(d.type === "shipping"){
 
@@ -352,84 +345,48 @@ Promise.all([
 
         }
 
-
         return 0.6;
-
 
     })
 
 
     .arcDashLength(d => {
 
-
         if(d.type === "shipping"){
 
-            return 0.25;
+            return 0.12;
 
         }
 
-
         return 0.4;
-
 
     })
 
 
-    .arcDashGap(1)
-
-    .arcDashAnimateTime(d => {
-
+    .arcDashGap(d => {
 
         if(d.type === "shipping"){
 
-            return 3500;
+            return 0.5;
 
         }
 
+        return 1;
+
+    })
+
+
+    .arcDashAnimateTime(d => {
+
+        if(d.type === "shipping"){
+
+            return 5000;
+
+        }
 
         return 2500;
-
 
     });
 
 
 });
-
-// SHIPPING PARTICLE TEST
-
-setTimeout(() => {
-
-    console.log("Shipping particles loaded:", shippingParticles);
-
-}, 3000);
-
-// THREE TEST OBJECT
-
-setTimeout(() => {
-
-    const test = new THREE.Mesh(
-
-        new THREE.SphereGeometry(
-            2,
-            16,
-            16
-        ),
-
-        new THREE.MeshBasicMaterial({
-            color:0xd4af37
-        })
-
-    );
-
-
-    world.scene().add(test);
-
-
-    test.position.set(
-        0,
-        0,
-        110
-    );
-
-
-},3000);
