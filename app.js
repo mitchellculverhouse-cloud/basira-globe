@@ -4,7 +4,7 @@ const globeContainer = document.getElementById("globe");
 const world = Globe()(globeContainer)
 
 .backgroundColor("#000000")
-    .globeMaterial(
+.globeMaterial(
 new THREE.MeshPhongMaterial({
     color: "#111111",
     shininess: 0.3
