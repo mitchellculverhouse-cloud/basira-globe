@@ -7,9 +7,7 @@ const world = Globe()(globeContainer)
 .backgroundColor("#000000")
 
 
-.globeImageUrl(
-"https://unpkg.com/three-globe/example/img/earth-dark.jpg"
-)
+
 
 
 
