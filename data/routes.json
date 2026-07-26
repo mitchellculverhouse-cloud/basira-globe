@@ -1,0 +1,38 @@
+[
+  {
+    "startLat": 31.2304,
+    "startLng": 121.4737,
+    "endLat": 25.2048,
+    "endLng": 55.2708
+  },
+  {
+    "startLat": 1.3521,
+    "startLng": 103.8198,
+    "endLat": 25.2048,
+    "endLng": 55.2708
+  },
+  {
+    "startLat": 19.0760,
+    "startLng": 72.8777,
+    "endLat": 25.2048,
+    "endLng": 55.2708
+  },
+  {
+    "startLat": 41.0082,
+    "startLng": 28.9784,
+    "endLat": 24.7136,
+    "endLng": 46.6753
+  },
+  {
+    "startLat": 30.0444,
+    "startLng": 31.2357,
+    "endLat": 21.4858,
+    "endLng": 39.1925
+  },
+  {
+    "startLat": 51.9244,
+    "startLng": 4.4777,
+    "endLat": 25.2048,
+    "endLng": 55.2708
+  }
+]
