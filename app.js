@@ -62,7 +62,7 @@ fetch("data/countries.geojson")
 
     .polygonsData(countries.features)
 
-    .polygonCapColor(() => "rgba(12,25,22,0.95)")
+    .polygonCapColor(() => "rgba(8,18,16,0.95)")
 
     .polygonSideColor(() => "rgba(20,225,167,0.15)")
 
