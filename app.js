@@ -1,3 +1,4 @@
+alert(JSON.stringify(terrainZones));
 console.log(terrainZones);
 
 const globeContainer = document.getElementById("globe");
