@@ -1,1 +1,47 @@
-
+[
+  {
+    "city": "London",
+    "lat": 51.5072,
+    "lng": -0.1276
+  },
+  {
+    "city": "Washington",
+    "lat": 38.9072,
+    "lng": -77.0369
+  },
+  {
+    "city": "Moscow",
+    "lat": 55.7558,
+    "lng": 37.6173
+  },
+  {
+    "city": "Beijing",
+    "lat": 39.9042,
+    "lng": 116.4074
+  },
+  {
+    "city": "Tokyo",
+    "lat": 35.6762,
+    "lng": 139.6503
+  },
+  {
+    "city": "Riyadh",
+    "lat": 24.7136,
+    "lng": 46.6753
+  },
+  {
+    "city": "Tehran",
+    "lat": 35.6892,
+    "lng": 51.3890
+  },
+  {
+    "city": "Dubai",
+    "lat": 25.2048,
+    "lng": 55.2708
+  },
+  {
+    "city": "Delhi",
+    "lat": 28.6139,
+    "lng": 77.2090
+  }
+]
