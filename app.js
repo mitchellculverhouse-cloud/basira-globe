@@ -1,5 +1,4 @@
-alert(JSON.stringify(terrainZones));
-console.log(terrainZones);
+window.terrainZones = terrainZones;
 
 const globeContainer = document.getElementById("globe");
 
