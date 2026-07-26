@@ -129,21 +129,38 @@ fetch("data/conflicts.json")
 .then(conflicts => {
 
 
-    world
+   // Conflict cores
 
-    .ringsData(conflicts)
+world
 
-    .ringLat("lat")
+.pointsData(conflicts)
 
-    .ringLng("lng")
+.pointLat("lat")
 
-    .ringColor(() => "#ff1744")
+.pointLng("lng")
 
-    .ringMaxRadius(2.5)
+.pointColor(() => "#ff1744")
 
-    .ringPropagationSpeed(0.6)
+.pointAltitude(0)
 
-    .ringRepeatPeriod(1500);
+.pointRadius(0.45);
 
 
-});
+
+// Conflict pulse rings
+
+world
+
+.ringsData(conflicts)
+
+.ringLat("lat")
+
+.ringLng("lng")
+
+.ringColor(() => "rgba(255,23,68,0.8)")
+
+.ringMaxRadius(3)
+
+.ringPropagationSpeed(0.5)
+
+.ringRepeatPeriod(1600);
