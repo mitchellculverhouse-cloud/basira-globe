@@ -260,73 +260,73 @@ Promise.all([
 
 });
 
-// TERRAIN RELIEF LAYER
+// TERRAIN RELIEF TEST
 
 setTimeout(() => {
+
+
+const globeMesh = world.globe();
+
+if(!globeMesh){
+
+    console.log("No globe mesh found");
+
+    return;
+
+}
+
 
 
 terrainZones.forEach(zone => {
 
 
-const geometry = new THREE.SphereGeometry(
+const marker = new THREE.Mesh(
 
-zone.size,
+    new THREE.SphereGeometry(
+        zone.size * 0.05,
+        16,
+        16
+    ),
 
-16,
+    new THREE.MeshBasicMaterial({
 
-16
+        color:0x444444,
 
-);
+        transparent:true,
 
+        opacity:0.7
 
-
-const material = new THREE.MeshBasicMaterial({
-
-color:0x222222,
-
-transparent:true,
-
-opacity:0.45
-
-});
-
-
-
-const mountain = new THREE.Mesh(
-
-geometry,
-
-material
+    })
 
 );
 
 
 
-const lat = zone.lat * Math.PI / 180;
-
-const lng = -zone.lng * Math.PI / 180;
-
-
-const radius = 100.5;
-
+const coords = world.getCoords(
+    zone.lat,
+    zone.lng,
+    101
+);
 
 
-mountain.position.set(
 
-radius * Math.cos(lat) * Math.cos(lng),
+marker.position.set(
 
-radius * Math.sin(lat),
+    coords.x,
 
-radius * Math.cos(lat) * Math.sin(lng)
+    coords.y,
+
+    coords.z
 
 );
 
 
 
-world.scene().add(mountain);
+world.scene().add(marker);
+
 
 
 });
 
 
-},2000);
+},3000);
