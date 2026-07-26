@@ -89,21 +89,98 @@ Promise.all([
 .then(([capitals, conflicts]) => {
 
 
-// CAPITAL DOTS
+// CAPITAL + TERRAIN POINT LAYER
 
-world
+fetch("data/terrain.json")
 
-.pointsData(capitals)
+.then(response => response.json())
 
-.pointLat("lat")
+.then(terrain => {
 
-.pointLng("lng")
 
-.pointColor(() => "#14e1a7")
+    const capitalPoints = capitals.map(city => ({
 
-.pointAltitude(0)
+        ...city,
 
-.pointRadius(0.25);
+        type:"capital"
+
+    }));
+
+
+    const terrainPoints = terrain.map(zone => ({
+
+        ...zone,
+
+        type:"terrain"
+
+    }));
+
+
+    const combinedPoints = [
+
+        ...capitalPoints,
+
+        ...terrainPoints
+
+    ];
+
+
+
+    world
+
+    .pointsData(combinedPoints)
+
+    .pointLat("lat")
+
+    .pointLng("lng")
+
+
+    .pointColor(d => {
+
+
+        if(d.type === "terrain"){
+
+            return "rgba(100,110,100,0.35)";
+
+        }
+
+
+        return "#14e1a7";
+
+    })
+
+
+    .pointAltitude(d => {
+
+
+        if(d.type === "terrain"){
+
+            return d.height;
+
+        }
+
+
+        return 0;
+
+    })
+
+
+    .pointRadius(d => {
+
+
+        if(d.type === "terrain"){
+
+            return d.size * 0.12;
+
+        }
+
+
+        return 0.25;
+
+    });
+
+
+});
 
 
 
@@ -384,28 +461,3 @@ Promise.all([
 });
 
 
-// TERRAIN RELIEF PATCHES
-
-fetch("data/terrain.json")
-
-.then(response => response.json())
-
-.then(terrain => {
-
-
-    world
-
-    .pointsData(terrain)
-
-    .pointLat("lat")
-
-    .pointLng("lng")
-
-    .pointColor(() => "rgba(100,110,100,0.35)")
-
-    .pointAltitude(d => d.height)
-
-    .pointRadius(d => d.size * 0.12);
-
-
-});
