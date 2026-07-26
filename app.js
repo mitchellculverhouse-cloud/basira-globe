@@ -41,10 +41,4 @@ world.controls().enablePan = false;
 
 
 
-// Move globe slightly right
-setTimeout(() => {
 
-    globeContainer.style.transform =
-    "translateX(220px)";
-
-}, 500);
