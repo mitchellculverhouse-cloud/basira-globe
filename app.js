@@ -68,3 +68,30 @@ world
 
 
 });
+
+// Capital nodes
+
+fetch(
+"data/capitals.json"
+)
+
+.then(response => response.json())
+
+.then(capitals => {
+
+
+world
+.pointsData(capitals)
+
+.pointLat("lat")
+
+.pointLng("lng")
+
+.pointColor(() => "#14e1a7")
+
+.pointAltitude(0.02)
+
+.pointRadius(0.15);
+
+
+});
