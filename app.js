@@ -115,3 +115,48 @@ world
 
 });
 
+// Conflict beacons
+
+fetch(
+"data/conflicts.json"
+)
+
+.then(response => response.json())
+
+.then(conflicts => {
+
+
+world
+
+.pointsData(conflicts)
+
+.pointLat("lat")
+
+.pointLng("lng")
+
+.pointColor(() => "#ff1744")
+
+.pointAltitude(0.01)
+
+.pointRadius(0.6);
+
+
+
+world
+
+.ringsData(conflicts)
+
+.ringLat("lat")
+
+.ringLng("lng")
+
+.ringColor(() => "#ff1744")
+
+.ringMaxRadius(2)
+
+.ringPropagationSpeed(1)
+
+.ringRepeatPeriod(1200);
+
+
+});
