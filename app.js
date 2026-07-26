@@ -81,6 +81,7 @@ fetch(
 
 
 world
+
 .pointsData(capitals)
 
 .pointLat("lat")
@@ -89,9 +90,28 @@ world
 
 .pointColor(() => "#14e1a7")
 
-.pointAltitude(0.02)
+.pointAltitude(0.005)
 
-.pointRadius(0.15);
+.pointRadius(0.35);
+
+
+
+world
+
+.ringsData(capitals)
+
+.ringLat("lat")
+
+.ringLng("lng")
+
+.ringColor(() => "#14e1a7")
+
+.ringMaxRadius(0.8)
+
+.ringPropagationSpeed(0.8)
+
+.ringRepeatPeriod(1800);
 
 
 });
+
