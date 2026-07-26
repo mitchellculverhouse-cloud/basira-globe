@@ -1,3 +1,5 @@
+console.log(landZones);
+
 window.terrainZones = terrainZones;
 
 
