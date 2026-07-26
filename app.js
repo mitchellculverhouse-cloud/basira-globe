@@ -383,3 +383,31 @@ Promise.all([
 
 });
 
+
+// TERRAIN RELIEF ZONES
+
+fetch("data/terrain.json")
+
+.then(response => response.json())
+
+.then(terrain => {
+
+
+    world
+
+    .ringsData(terrain)
+
+    .ringLat("lat")
+
+    .ringLng("lng")
+
+    .ringColor(() => "rgba(120,120,120,0.35)")
+
+    .ringMaxRadius(d => d.size)
+
+    .ringPropagationSpeed(0)
+
+    .ringRepeatPeriod(0);
+
+
+});
