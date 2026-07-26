@@ -403,25 +403,16 @@ setTimeout(() => {
 
 }, 3000);
 
-// SHIPPING PARTICLE LAYER
+// THREE TEST OBJECT
 
 setTimeout(() => {
 
-
-const scene = world.scene();
-
-const particles = [];
-
-
-shippingParticles.forEach(route => {
-
-
-    const particle = new THREE.Mesh(
+    const test = new THREE.Mesh(
 
         new THREE.SphereGeometry(
-            0.35,
-            8,
-            8
+            2,
+            16,
+            16
         ),
 
         new THREE.MeshBasicMaterial({
@@ -431,101 +422,14 @@ shippingParticles.forEach(route => {
     );
 
 
-    scene.add(particle);
+    world.scene().add(test);
 
 
-    particles.push({
-
-        object: particle,
-
-        route: route,
-
-        progress: Math.random()
-
-    });
-
-
-});
-
-
-
-
-function animateShipping(){
-
-
-    particles.forEach(p => {
-
-
-        p.progress += 0.002;
-
-
-        if(p.progress > 1){
-
-            p.progress = 0;
-
-        }
-
-
-
-        const lat =
-
-        p.route.startLat +
-
-        (p.route.endLat - p.route.startLat)
-
-        * p.progress;
-
-
-
-        const lng =
-
-        p.route.startLng +
-
-        (p.route.endLng - p.route.startLng)
-
-        * p.progress;
-
-
-
-
-        const phi = lat * Math.PI / 180;
-
-        const theta = lng * Math.PI / 180;
-
-
-        const radius = 102;
-
-
-
-        p.object.position.set(
-
-            radius *
-            Math.cos(phi) *
-            Math.cos(theta),
-
-
-            radius *
-            Math.sin(phi),
-
-
-            radius *
-            Math.cos(phi) *
-            Math.sin(theta)
-
-        );
-
-
-    });
-
-
-
-    requestAnimationFrame(animateShipping);
-
-}
-
-
-
-animateShipping();
+    test.position.set(
+        0,
+        0,
+        110
+    );
 
 
 },3000);
