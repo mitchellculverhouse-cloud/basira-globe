@@ -81,12 +81,14 @@ Promise.all([
 
     fetch("data/capitals.json").then(r => r.json()),
 
-    fetch("data/conflicts.json").then(r => r.json())
+    fetch("data/conflicts.json").then(r => r.json()),
+
+    fetch("data/energy.json").then(r => r.json())
 
 ])
 
 
-.then(([capitals, conflicts]) => {
+.then(([capitals, conflicts, energy]) => {
 
 
 // CAPITAL DOTS
@@ -145,33 +147,38 @@ world
 
 
 
+//rings
 
-
-
-    // COMBINED RINGS
 
     const intelligenceRings = [
 
-        ...capitals.map(city => ({
+    ...capitals.map(city => ({
 
-            ...city,
+        ...city,
 
-            type:"capital"
+        type:"capital"
 
-        })),
-
-
-
-        ...conflicts.map(zone => ({
-
-            ...zone,
-
-            type:"conflict"
-
-        }))
+    })),
 
 
-    ];
+    ...conflicts.map(zone => ({
+
+        ...zone,
+
+        type:"conflict"
+
+    })),
+
+
+    ...energy.map(zone => ({
+
+        ...zone,
+
+        type:"energy"
+
+    }))
+
+];
 
 
 
@@ -248,7 +255,11 @@ world
 
     });
 
+if(d.type === "energy"){
 
+    return "#ff9800";
+
+}
 
 });
 // INTELLIGENCE + SHIPPING ROUTES
@@ -381,31 +392,3 @@ Promise.all([
 
 });
 
-// ENERGY NODES
-
-fetch("data/energy.json")
-
-.then(response => response.json())
-
-.then(energy => {
-
-
-    world
-
-    .ringsData(energy)
-
-    .ringLat("lat")
-
-    .ringLng("lng")
-
-    .ringColor(() => "#ff9800")
-
-    .ringMaxRadius(2)
-
-    .ringPropagationSpeed(0.25)
-
-    .ringRepeatPeriod(3000);
-
-
-
-});
