@@ -384,7 +384,7 @@ Promise.all([
 });
 
 
-// TERRAIN RELIEF ZONES
+// TERRAIN RELIEF PATCHES
 
 fetch("data/terrain.json")
 
@@ -395,19 +395,17 @@ fetch("data/terrain.json")
 
     world
 
-    .ringsData(terrain)
+    .pointsData(terrain)
 
-    .ringLat("lat")
+    .pointLat("lat")
 
-    .ringLng("lng")
+    .pointLng("lng")
 
-    .ringColor(() => "rgba(120,120,120,0.35)")
+    .pointColor(() => "rgba(100,110,100,0.35)")
 
-    .ringMaxRadius(d => d.size)
+    .pointAltitude(d => d.height)
 
-    .ringPropagationSpeed(0)
-
-    .ringRepeatPeriod(0);
+    .pointRadius(d => d.size * 0.12);
 
 
 });
