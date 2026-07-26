@@ -5,9 +5,8 @@ const world = Globe()(globeContainer)
 
 .backgroundColor("#000000")
 
-.globeImageUrl(
-"https://unpkg.com/three-globe/example/img/earth-dark.jpg"
-)
+// Remove Earth texture
+.globeImageUrl(null)
 
 .showAtmosphere(true)
 
@@ -42,7 +41,8 @@ world.controls().enablePan = false;
 
 
 
-// Country borders
+
+// COUNTRY OUTLINES
 
 fetch("data/countries.geojson")
 
@@ -69,7 +69,8 @@ fetch("data/countries.geojson")
 
 
 
-// Capitals
+
+// CAPITAL NODES
 
 fetch("data/capitals.json")
 
@@ -80,34 +81,37 @@ fetch("data/capitals.json")
 
     world
 
-    .htmlElementsData(capitals)
+    .pointsData(capitals)
 
-    .htmlLat("lat")
+    .pointLat("lat")
 
-    .htmlLng("lng")
+    .pointLng("lng")
 
-    .htmlElement(() => {
+    .pointColor(() => "#14e1a7")
 
+    .pointAltitude(0)
 
-        const node = document.createElement("div");
-
-
-        node.style.width = "8px";
-
-        node.style.height = "8px";
-
-        node.style.borderRadius = "50%";
-
-        node.style.background = "#14e1a7";
-
-        node.style.boxShadow =
-        "0 0 12px #14e1a7, 0 0 25px rgba(20,225,167,0.5)";
+    .pointRadius(0.25);
 
 
-        return node;
 
+    // Capital glow pulses
 
-    });
+    world
+
+    .ringsData(capitals)
+
+    .ringLat("lat")
+
+    .ringLng("lng")
+
+    .ringColor(() => "rgba(20,225,167,0.8)")
+
+    .ringMaxRadius(0.7)
+
+    .ringPropagationSpeed(0.4)
+
+    .ringRepeatPeriod(2000);
 
 
 });
@@ -115,7 +119,8 @@ fetch("data/capitals.json")
 
 
 
-// Conflict beacons
+
+// CONFLICT BEACONS
 
 fetch("data/conflicts.json")
 
@@ -123,43 +128,6 @@ fetch("data/conflicts.json")
 
 .then(conflicts => {
 
-
-    // Red beacon centres
-
-    world
-
-    .htmlElementsData(conflicts)
-
-    .htmlLat("lat")
-
-    .htmlLng("lng")
-
-    .htmlElement(() => {
-
-
-        const marker = document.createElement("div");
-
-
-        marker.style.width = "14px";
-
-        marker.style.height = "14px";
-
-        marker.style.background = "#ff1744";
-
-        marker.style.borderRadius = "50%";
-
-        marker.style.boxShadow =
-        "0 0 20px #ff1744";
-
-
-        return marker;
-
-
-    });
-
-
-
-    // Pulse rings
 
     world
 
