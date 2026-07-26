@@ -245,20 +245,22 @@ world
     })
 
 
-    .ringRepeatPeriod(d => {
+   .ringRepeatPeriod(d => {
+
+    if(d.type === "conflict"){
+
+        return 1600;
+
+    }
+
+    return 2000;
+
+});
+
+});
 
 
-        if(d.type === "conflict"){
-
-            return 1600;
-
-        }
-
-
-        return 2000;
-
-
-    });
+// INTELLIGENCE + SHIPPING ROUTES
 
 
 
