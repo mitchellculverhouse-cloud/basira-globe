@@ -25,7 +25,7 @@ world.pointOfView(
 {
     lat:35,
     lng:35,
-    altitude:1.4
+    altitude:1.6
 },
 1000
 );
