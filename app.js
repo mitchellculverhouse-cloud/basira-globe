@@ -259,3 +259,74 @@ Promise.all([
 
 
 });
+
+// TERRAIN RELIEF LAYER
+
+setTimeout(() => {
+
+
+terrainZones.forEach(zone => {
+
+
+const geometry = new THREE.SphereGeometry(
+
+zone.size,
+
+16,
+
+16
+
+);
+
+
+
+const material = new THREE.MeshBasicMaterial({
+
+color:0x222222,
+
+transparent:true,
+
+opacity:0.45
+
+});
+
+
+
+const mountain = new THREE.Mesh(
+
+geometry,
+
+material
+
+);
+
+
+
+const lat = zone.lat * Math.PI / 180;
+
+const lng = -zone.lng * Math.PI / 180;
+
+
+const radius = 100.5;
+
+
+
+mountain.position.set(
+
+radius * Math.cos(lat) * Math.cos(lng),
+
+radius * Math.sin(lat),
+
+radius * Math.cos(lat) * Math.sin(lng)
+
+);
+
+
+
+world.scene().add(mountain);
+
+
+});
+
+
+},2000);
