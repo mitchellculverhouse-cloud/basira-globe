@@ -69,94 +69,98 @@ world
 
 });
 
-// Capital nodes
+// Load capitals and conflicts together
 
-fetch(
-"data/capitals.json"
-)
+Promise.all([
 
-.then(response => response.json())
+    fetch("data/capitals.json").then(res => res.json()),
 
-.then(capitals => {
+    fetch("data/conflicts.json").then(res => res.json())
 
+])
 
-world
-
-.pointsData(capitals)
-
-.pointLat("lat")
-
-.pointLng("lng")
-
-.pointColor(() => "#14e1a7")
-
-.pointAltitude(0.005)
-
-.pointRadius(0.35);
+.then(([capitals, conflicts]) => {
 
 
+    // Add type identifiers
 
-world
+    capitals.forEach(city => {
 
-.ringsData(capitals)
+        city.type = "capital";
 
-.ringLat("lat")
-
-.ringLng("lng")
-
-.ringColor(() => "#14e1a7")
-
-.ringMaxRadius(0.8)
-
-.ringPropagationSpeed(0.8)
-
-.ringRepeatPeriod(1800);
+    });
 
 
-});
+    conflicts.forEach(event => {
 
-// Conflict beacons
+        event.type = "conflict";
 
-fetch(
-"data/conflicts.json"
-)
-
-.then(response => response.json())
-
-.then(conflicts => {
-
-
-world
-
-.pointsData(conflicts)
-
-.pointLat("lat")
-
-.pointLng("lng")
-
-.pointColor(() => "#ff1744")
-
-.pointAltitude(0.01)
-
-.pointRadius(0.6);
+    });
 
 
 
-world
+    const intelligencePoints = [
 
-.ringsData(conflicts)
+        ...capitals,
 
-.ringLat("lat")
+        ...conflicts
 
-.ringLng("lng")
+    ];
 
-.ringColor(() => "#ff1744")
 
-.ringMaxRadius(2)
 
-.ringPropagationSpeed(1)
+    // Points layer
 
-.ringRepeatPeriod(1200);
+    world
+
+    .pointsData(intelligencePoints)
+
+    .pointLat("lat")
+
+    .pointLng("lng")
+
+    .pointColor(point => {
+
+        return point.type === "conflict"
+
+        ? "#ff1744"
+
+        : "#14e1a7";
+
+    })
+
+    .pointAltitude(0.005)
+
+    .pointRadius(point => {
+
+        return point.type === "conflict"
+
+        ? 0.6
+
+        : 0.35;
+
+    });
+
+
+
+    // Pulse rings for conflicts only
+
+    world
+
+    .ringsData(conflicts)
+
+    .ringLat("lat")
+
+    .ringLng("lng")
+
+    .ringColor(() => "#ff1744")
+
+    .ringMaxRadius(2)
+
+    .ringPropagationSpeed(1)
+
+    .ringRepeatPeriod(1200);
+
 
 
 });
