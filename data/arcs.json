@@ -29,4 +29,47 @@
     "endLat": 30.0444,
     "endLng": 31.2357
   }
+  ,
+{
+  "name":"North Atlantic Corridor",
+  "startLat":51.5072,
+  "startLng":-0.1276,
+  "endLat":40.7128,
+  "endLng":-74.0060
+},
+{
+  "name":"South Atlantic Corridor",
+  "startLat":-23.5505,
+  "startLng":-46.6333,
+  "endLat":-33.8688,
+  "endLng":151.2093
+},
+{
+  "name":"Pacific Trade Route",
+  "startLat":35.6762,
+  "startLng":139.6503,
+  "endLat":34.0522,
+  "endLng":-118.2437
+},
+{
+  "name":"North Pacific Link",
+  "startLat":35.6762,
+  "startLng":139.6503,
+  "endLat":37.7749,
+  "endLng":-122.4194
+},
+{
+  "name":"Europe Asia Route",
+  "startLat":51.5072,
+  "startLng":-0.1276,
+  "endLat":39.9042,
+  "endLng":116.4074
+},
+{
+  "name":"Middle East Europe Corridor",
+  "startLat":25.2048,
+  "startLng":55.2708,
+  "endLat":51.5072,
+  "endLng":-0.1276
+}
 ]
