@@ -390,3 +390,15 @@ Promise.all([
 
 
 });
+
+// TERRAIN DATA TEST
+
+fetch("data/terrain.json")
+
+.then(response => response.json())
+
+.then(terrain => {
+
+    console.log("Terrain loaded:", terrain);
+
+});
